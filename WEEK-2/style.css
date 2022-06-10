@@ -1,0 +1,18 @@
+body {
+  font-family: Cerebri Sans, Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  font-size: 80px;
+  line-height: 48px;
+  font-weight: 900;
+  margin: 1px auto;
+}
+
+h1 {
+  color: black;
+}
+
+.location {
+  text-align: right;
+}
