@@ -1,9 +1,12 @@
 body {
   font-family: Cerebri Sans, Helvetica, Arial, sans-serif;
+  background-color: yellowgreen;
 }
-
+.hello {
+  background-color: whitesmoke;
+}
 h1 {
-  font-size: 80px;
+  font-size: 40px;
   line-height: 48px;
   font-weight: 900;
   margin: 1px auto;
@@ -14,5 +17,45 @@ h1 {
 }
 
 .location {
+  text-align: left;
+}
+#tempNow {
+  font-size: 80px;
   text-align: right;
+  font-weight: 900;
+  padding-right: 0;
+}
+.WeatherDetails {
+  text-align: center;
+  line-height: 23px;
+  font-weight: 600;
+}
+#mrdeg {
+  font-size: small;
+}
+h6,
+p {
+  text-align: center;
+}
+.day {
+  text-align: left;
+}
+.highTemp {
+  font-weight: bold;
+}
+.wtimg {
+  font-size: 80px;
+  line-height: 48px;
+}
+.wtdetail {
+  font-size: 18px;
+  color: rgb(99, 102, 104);
+}
+.wtmeasure {
+  font-size: 15px;
+  font-weight: bold;
+}
+#hourlyforecast,
+#weeklyforecast {
+  height: 300px;
 }
