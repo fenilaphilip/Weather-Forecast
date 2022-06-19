@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather Report</title>
+    <title>Weather App</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -14,177 +14,213 @@
     <link href="style.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="container hello">
-      <div class="row m-2">
+    <div class="container" id="weatherforecast">
+      <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="#">WEATHER FORECAST</a>
+
+          <form class="d-flex" role="search" id="search-button">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Enter city name"
+              aria-label="Search"
+              id="searched-city"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </nav>
+      <div class="row">
         <div class="col">
-          <div class="row pt-3">
-            <div class="card">
-              <div class="card-body" id="mainReport">
-                <h1 class="card-title location pt-2">Berlin</h1>
-                <div class="row">
-                  <div class="col pt-2">
-                    <h1 id="tempNow">21</h1>
-                  </div>
-                  <div class="col-6">
-                    <h5>°C</h5>
-                    <h5>Partially cloudy</h5>
-                  </div>
-                  <div class="col pt-2 wtimg">⛅</div>
+          <div class="card">
+            <div class="card-body" id="mainReport">
+              <h1 class="card-title location pt-2" id="location">BERLIN</h1>
+              <div class="row">
+                <div class="col pt-2">
+                  <h1 id="tempNow">21</h1>
                 </div>
-                <div class="row pt-2">
-                  <p class="day">June 06 Monday 22 °C / 14 °C</p>
+                <div class="col-6">
+                  <h5 class="float-left">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        class="btn-check"
+                        name="btnradio"
+                        id="btnradio1"
+                        autocomplete="off"
+                        checked
+                      />
+                      <label class="btn btn-outline-primary" for="btnradio1">
+                        °C
+                      </label>
+
+                      <input
+                        type="radio"
+                        class="btn-check"
+                        name="btnradio"
+                        id="btnradio2"
+                        autocomplete="off"
+                      />
+                      <label class="btn btn-outline-primary" for="btnradio2">
+                        °F
+                      </label>
+                    </div>
+                  </h5>
+                  <h5>Partially cloudy</h5>
                 </div>
+                <div class="col pt-2 wtimg">⛅</div>
               </div>
-            </div>
-          </div>
-          <div class="row pt-2">
-            <div class="card">
-              <div class="card-body overflow-auto" id="weeklyforecast">
-                <div class="row">
-                  <div class="col-3">
-                    <p class="day">Today</p>
-                    <p class="day">Tomorrow</p>
-                    <p class="day">08 Wed</p>
-                    <p class="day">09 Thu</p>
-                    <p class="day">10 Fri</p>
-                    <p class="day">11 Sat</p>
-                    <p class="day">12 Sun</p>
-                    <p class="day">13 Mon</p>
-                  </div>
-                  <div class="col-1">
-                    <p>⛅</p>
-                    <p>⛅</p>
-                    <p>⛅</p>
-                    <p>⛅</p>
-                    <p>⛅</p>
-                    <p>⛅</p>
-                    <p>⛅</p>
-                    <p>⛅</p>
-                  </div>
-                  <div class="col">
-                    <p>Partially cloudy</p>
-                    <p>Partially cloudy</p>
-                    <p>Partially cloudy</p>
-                    <p>Partially cloudy</p>
-                    <p>Partially cloudy</p>
-                    <p>Partially cloudy</p>
-                    <p>Partially cloudy</p>
-                    <p>Partially cloudy</p>
-                  </div>
-                  <div class="col">
-                    <p><span class="highTemp">22 °C </span> / 14 °C</p>
-                    <p><span class="highTemp">22 °C </span> / 14 °C</p>
-                    <p><span class="highTemp">22 °C </span> / 14 °C</p>
-                    <p><span class="highTemp">22 °C </span> / 14 °C</p>
-                    <p><span class="highTemp">22 °C </span> / 14 °C</p>
-                    <p><span class="highTemp">22 °C </span> / 14 °C</p>
-                    <p><span class="highTemp">22 °C </span> / 14 °C</p>
-                    <p><span class="highTemp">22 °C </span> / 14 °C</p>
-                  </div>
-                </div>
+              <div class="row pt-2">
+                <p class="day" id="current-date">May 06 Monday 06:30 PM</p>
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="card pt-2">
-              <h6><strong>One-week weather forecast</strong></h6>
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="row mt-2">
-            <div class="col mt-2">
-              <form class="d-flex" role="search">
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Enter city name"
-                  aria-label="Search"
-                />
-                <button class="btn btn-outline-success" type="submit">
-                  Search
-                </button>
-              </form>
-            </div>
-          </div>
-          <div class="row p-2">
-            <div class="card">
-              <div class="card-body">
-                <h3 class="card-title WeatherDetails">Weather details</h3>
-                <div class="row">
-                  <div class="col pt-2">
-                    <h6 class="wtdetail">Humidity</h6>
-                    <p class="wtmeasure">50%</p>
-                    <h6 class="wtdetail">wind</h6>
-                    <p class="wtmeasure">24 km/h</p>
-                  </div>
-                  <div class="col pt-2">
-                    <h6 class="wtdetail">UV</h6>
-                    <p class="wtmeasure">moderate</p>
-                    <h6 class="wtdetail">Air Pressure</h6>
-                    <p class="wtmeasure">1014 hPa</p>
-                  </div>
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title WeatherDetails">Weather details</h3>
+              <div class="row">
+                <div class="col pt-2">
+                  <h6 class="wtdetail">Humidity</h6>
+                  <p class="wtmeasure">50%</p>
+                  <h6 class="wtdetail">wind</h6>
+                  <p class="wtmeasure">24 km/h</p>
                 </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body overflow-auto" id="hourlyforecast">
-                <div class="row">
-                  <div class="col">
-                    <p>11:00 AM</p>
-                    <p>12:00 PM</p>
-                    <p>01:00 PM</p>
-                    <p>02:00 PM</p>
-                    <p>03:00 PM</p>
-                    <p>04:00 PM</p>
-                    <p>05:00 PM</p>
-                    <p>06:00 PM</p>
-                    <p>07:00 PM</p>
-                    <p>08:00 PM</p>
-                  </div>
-                  <div class="col">
-                    <p>⛅</p>
-                    <p>⛅</p>
-                    <p>⛅</p>
-                    <p>⛅</p>
-                    <p>⛅</p>
-                    <p>⛅</p>
-                    <p>⛅</p>
-                    <p>⛅</p>
-                    <p>⛅</p>
-                    <p>⛅</p>
-                  </div>
-                  <div class="col-4">
-                    <p>Partially cloudy</p>
-                    <p>Partially cloudy</p>
-                    <p>Partially cloudy</p>
-                    <p>Partially cloudy</p>
-                    <p>Partially cloudy</p>
-                    <p>Partially cloudy</p>
-                    <p>Partially cloudy</p>
-                    <p>Partially cloudy</p>
-                    <p>Partially cloudy</p>
-                    <p>Partially cloudy</p>
-                  </div>
-                  <div class="col">
-                    <p>22 °C</p>
-                    <p>22 °C</p>
-                    <p>22 °C</p>
-                    <p>22 °C</p>
-                    <p>22 °C</p>
-                    <p>22 °C</p>
-                    <p>22 °C</p>
-                    <p>22 °C</p>
-                    <p>22 °C</p>
-                    <p>22 °C</p>
-                  </div>
+                <div class="col pt-2">
+                  <h6 class="wtdetail">UV</h6>
+                  <p class="wtmeasure">moderate</p>
+                  <h6 class="wtdetail">Air Pressure</h6>
+                  <p class="wtmeasure">1014 hPa</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <p><i>Created by Fenila Sosa Philip</i></p>
+      <div class="row">
+        <div class="col mt-2">
+          <div class="card pt-2">
+            <h6><strong>Hourly weather forecast</strong></h6>
+          </div>
+          <div class="card">
+            <div class="card-body overflow-auto" id="hourlyforecast">
+              <div class="row">
+                <div class="col">
+                  <p>11:00 AM</p>
+                  <p>12:00 PM</p>
+                  <p>01:00 PM</p>
+                  <p>02:00 PM</p>
+                  <p>03:00 PM</p>
+                  <p>04:00 PM</p>
+                  <p>05:00 PM</p>
+                  <p>06:00 PM</p>
+                  <p>07:00 PM</p>
+                  <p>08:00 PM</p>
+                </div>
+                <div class="col">
+                  <p>⛅</p>
+                  <p>⛅</p>
+                  <p>⛅</p>
+                  <p>⛅</p>
+                  <p>⛅</p>
+                  <p>⛅</p>
+                  <p>⛅</p>
+                  <p>⛅</p>
+                  <p>⛅</p>
+                  <p>⛅</p>
+                </div>
+                <div class="col-4">
+                  <p>Partially cloudy</p>
+                  <p>Partially cloudy</p>
+                  <p>Partially cloudy</p>
+                  <p>Partially cloudy</p>
+                  <p>Partially cloudy</p>
+                  <p>Partially cloudy</p>
+                  <p>Partially cloudy</p>
+                  <p>Partially cloudy</p>
+                  <p>Partially cloudy</p>
+                  <p>Partially cloudy</p>
+                </div>
+                <div class="col">
+                  <p>22 °C</p>
+                  <p>22 °C</p>
+                  <p>22 °C</p>
+                  <p>22 °C</p>
+                  <p>22 °C</p>
+                  <p>22 °C</p>
+                  <p>22 °C</p>
+                  <p>22 °C</p>
+                  <p>22 °C</p>
+                  <p>22 °C</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col mt-2">
+          <div class="card pt-2">
+            <h6><strong>One-week weather forecast</strong></h6>
+          </div>
+          <div class="card">
+            <div class="card-body overflow-auto" id="weeklyforecast">
+              <div class="row">
+                <div class="col-3">
+                  <p class="day">Today</p>
+                  <p class="day">Tomorrow</p>
+                  <p class="day">08 Wed</p>
+                  <p class="day">09 Thu</p>
+                  <p class="day">10 Fri</p>
+                  <p class="day">11 Sat</p>
+                  <p class="day">12 Sun</p>
+                  <p class="day">13 Mon</p>
+                </div>
+                <div class="col-1">
+                  <p>⛅</p>
+                  <p>⛅</p>
+                  <p>⛅</p>
+                  <p>⛅</p>
+                  <p>⛅</p>
+                  <p>⛅</p>
+                  <p>⛅</p>
+                  <p>⛅</p>
+                </div>
+                <div class="col">
+                  <p>Partially cloudy</p>
+                  <p>Partially cloudy</p>
+                  <p>Partially cloudy</p>
+                  <p>Partially cloudy</p>
+                  <p>Partially cloudy</p>
+                  <p>Partially cloudy</p>
+                  <p>Partially cloudy</p>
+                  <p>Partially cloudy</p>
+                </div>
+                <div class="col">
+                  <p><span class="highTemp">22 °C </span> / 14 °C</p>
+                  <p><span class="highTemp">22 °C </span> / 14 °C</p>
+                  <p><span class="highTemp">22 °C </span> / 14 °C</p>
+                  <p><span class="highTemp">22 °C </span> / 14 °C</p>
+                  <p><span class="highTemp">22 °C </span> / 14 °C</p>
+                  <p><span class="highTemp">22 °C </span> / 14 °C</p>
+                  <p><span class="highTemp">22 °C </span> / 14 °C</p>
+                  <p><span class="highTemp">22 °C </span> / 14 °C</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <p><i>Created by Fenila Sosa Philip</i></p>
+      </div>
     </div>
   </body>
+  <script src="script.js"></script>
 </html>

@@ -1,8 +1,8 @@
 body {
   font-family: Cerebri Sans, Helvetica, Arial, sans-serif;
-  background-color: yellowgreen;
+  background-color: rgb(91, 92, 89);
 }
-.hello {
+#weatherforecast {
   background-color: whitesmoke;
 }
 h1 {
@@ -27,7 +27,7 @@ h1 {
 }
 .WeatherDetails {
   text-align: center;
-  line-height: 23px;
+  line-height: 40px;
   font-weight: 600;
 }
 #mrdeg {
