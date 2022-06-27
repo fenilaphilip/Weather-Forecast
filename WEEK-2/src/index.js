@@ -1,6 +1,8 @@
 var apiKey = `9f60d7631c91fefe3d27ab9b78997410`;
 var units = "metric";
 var temperatureInCity;
+var currentCity;
+var apiRequest = `https://api.openweathermap.org/data/2.5/weather?`;
 
 function displayCurrentDate() {
   let now = new Date();
@@ -45,7 +47,11 @@ function displayCurrentDate() {
       time = `${hour}:${minute} PM`;
     }
   } else {
-    time = `0${hour}:${minute} AM`;
+    if (hour < 10) {
+      time = `0${hour}:${minute} AM`;
+    } else {
+      time = `${hour}:${minute} AM`;
+    }
   }
   let CurrentDate = document.querySelector("#current-date");
   CurrentDate.innerHTML = `${month} ${date} ${day} ${time}`;
@@ -54,29 +60,25 @@ function displayCurrentDate() {
 function weatherInThisCity(event) {
   event.preventDefault();
   let searchBox = document.querySelector("#searched-city");
-  let locateCity = searchBox.value.trim();
-  let queryParams = `q=${locateCity}&units=${units}&appid=${apiKey}`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?${queryParams}`;
-  axios.get(apiUrl).then(showTemperature);
+  currentCity = searchBox.value.trim();
+  apiAccess();
   searchBox.value = "";
 }
 
-function getTemperature(useFahrenheit) {
-  if (useFahrenheit) {
-    return Math.round(temperatureInCity * 1.8 + 32.0);
-  } else {
-    return temperatureInCity;
-  }
+function apiAccess() {
+  let queryParams = `q=${currentCity}&units=${units}&appid=${apiKey}`;
+  let apiUrl = `${apiRequest}${queryParams}`;
+  axios.get(apiUrl).then(showTemperature);
 }
 
 function showTemperatureInF() {
-  let tempNowHeader = document.querySelector("#tempNow");
-  tempNowHeader.innerHTML = getTemperature(true);
+  units = "imperial";
+  apiAccess();
 }
 
 function showTemperatureInC() {
-  let tempNowHeader = document.querySelector("#tempNow");
-  tempNowHeader.innerHTML = getTemperature(false);
+  units = "metric";
+  apiAccess();
 }
 
 function showHourlyforecast(currentHour) {
@@ -96,15 +98,14 @@ function showTemperature(response) {
   temperatureInCity = Math.round(response.data.main.temp);
   let temp_min = Math.round(response.data.main.temp_min);
   let temp_max = Math.round(response.data.main.temp_max);
-  let city = response.data.name;
+  currentCity = response.data.name;
   let humidity = response.data.main.humidity;
-  let uv;
   let airPressure = Math.round(response.data.main.pressure);
   let wind = Math.round(response.data.wind.speed);
   let tempNowHeader = document.querySelector("#tempNow");
   tempNowHeader.innerHTML = temperatureInCity;
   let currentLocation = document.querySelector("#location");
-  currentLocation.innerHTML = `${city}`;
+  currentLocation.innerHTML = `${currentCity.toUpperCase()}`;
   let humid = document.querySelector("#humidity");
   humid.innerHTML = `${humidity} %`;
   let windSpeed = document.querySelector("#windSpeed");
@@ -119,7 +120,7 @@ function showLocation(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let queryParams = `lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?${queryParams}`;
+  let apiUrl = `${apiRequest}${queryParams}`;
 
   axios.get(apiUrl).then(showTemperature);
 }
@@ -140,3 +141,4 @@ let tempC = document.querySelector("#btn-celsius");
 tempC.addEventListener("click", showTemperatureInC);
 let locationNow = document.querySelector("#location-button");
 locationNow.addEventListener("click", currentLocation);
+navigator.geolocation.getCurrentPosition(showLocation);

@@ -20,7 +20,7 @@
         <div class="container">
           <div>
             <a class="navbar-brand" href="#">WEATHER FORECAST</a>
-            <a class="btn btn-outline-success me-2" id="location-button">
+            <a class="btn btn-outline-success m-2" id="location-button">
               Current Location
             </a>
           </div>
@@ -45,71 +45,69 @@
         <div class="col">
           <div class="card">
             <div class="card-body" id="mainReport">
-              <h1 class="card-title location pt-2" id="location">BERLIN</h1>
+              <h1 class="card-title location pt-2 text-center" id="location">
+                BERLIN
+              </h1>
               <div class="row">
-                <div class="col pt-2">
-                  <h1 id="tempNow">10</h1>
-                </div>
-                <div class="col-6">
-                  <h5 class="float-left">
-                    <div
-                      class="btn-group"
-                      role="group"
-                      aria-label="Basic radio toggle button group"
-                    >
-                      <input
-                        type="radio"
-                        class="btn-check"
-                        name="btnradio"
-                        id="btn-celsius"
-                        autocomplete="off"
-                        checked
-                      />
-                      <label class="btn btn-outline-primary" for="btn-celsius">
-                        °C
-                      </label>
-                      <input
-                        type="radio"
-                        class="btn-check"
-                        name="btnradio"
-                        id="btn-fahrenheit"
-                        autocomplete="off"
-                      />
-                      <label
-                        class="btn btn-outline-primary"
-                        for="btn-fahrenheit"
+                <div class="row">
+                  <div class="col pt-2">
+                    <h1 id="tempNow">10</h1>
+                  </div>
+                  <div class="col-6">
+                    <h5 class="float-left">
+                      <div
+                        class="btn-group"
+                        role="group"
+                        aria-label="Basic radio toggle button group"
                       >
-                        °F
-                      </label>
-                    </div>
-                  </h5>
-                  <h5>Partially cloudy</h5>
+                        <input
+                          type="radio"
+                          class="btn-check"
+                          name="btnradio"
+                          id="btn-celsius"
+                          autocomplete="off"
+                          checked
+                        />
+                        <label
+                          class="btn btn-outline-primary"
+                          for="btn-celsius"
+                        >
+                          °C
+                        </label>
+                        <input
+                          type="radio"
+                          class="btn-check"
+                          name="btnradio"
+                          id="btn-fahrenheit"
+                          autocomplete="off"
+                        />
+                        <label
+                          class="btn btn-outline-primary"
+                          for="btn-fahrenheit"
+                        >
+                          °F
+                        </label>
+                      </div>
+                    </h5>
+                  </div>
+                  <div class="col pt-2">
+                    <div class="wtimg">⛅</div>
+                  </div>
                 </div>
-                <div class="col pt-2 wtimg">⛅</div>
-              </div>
-              <div class="row pt-2">
-                <p class="day" id="current-date">May 06 Monday 06:30 PM</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <h3 class="card-title WeatherDetails">Weather details</h3>
-              <div class="row">
+
                 <div class="col pt-2">
                   <h6 class="wtdetail">Humidity</h6>
                   <p class="wtmeasure" id="humidity">50%</p>
+
                   <h6 class="wtdetail">wind</h6>
                   <p class="wtmeasure" id="windSpeed">24 km/h</p>
-                </div>
-                <div class="col pt-2">
-                  <h6 class="wtdetail">UV</h6>
-                  <p class="wtmeasure">moderate</p>
+
                   <h6 class="wtdetail">Air Pressure</h6>
                   <p class="wtmeasure" id="air_pressure">1014 hPa</p>
                 </div>
+              </div>
+              <div class="row pt-2">
+                <p class="day" id="current-date">May 06 Monday 06:30 PM</p>
               </div>
             </div>
           </div>
