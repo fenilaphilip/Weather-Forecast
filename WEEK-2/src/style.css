@@ -2,6 +2,12 @@ body {
   font-family: Cerebri Sans, Helvetica, Arial, sans-serif;
   background-color: rgb(91, 92, 89);
 }
+#mainReport {
+  height: 500px;
+  background-image: url("sky1.jpg");
+  background-size: cover;
+  background-position: center bottom;
+}
 #weatherforecast {
   background-color: whitesmoke;
 }
@@ -49,7 +55,7 @@ p {
 }
 .wtdetail {
   font-size: 18px;
-  color: rgb(99, 102, 104);
+  color: rgb(117, 30, 15);
 }
 .wtmeasure {
   font-size: 15px;
