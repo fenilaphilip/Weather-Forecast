@@ -2,19 +2,21 @@ body {
   font-family: Cerebri Sans, Helvetica, Arial, sans-serif;
   background-color: rgb(91, 92, 89);
 }
-/*
+
 #mainReport {
   background-image: url("sky1.jpg");
   background-size: cover;
   background-position: center bottom;
 }
-*/
+
+#description::first-letter {
+  text-transform: capitalize;
+}
+
 #weatherforecast {
   background-color: whitesmoke;
 }
-#btn-celsius {
-  color: black;
-}
+
 h1 {
   font-size: 40px;
   line-height: 48px;
@@ -53,7 +55,7 @@ p {
 .highTemp {
   font-weight: bold;
 }
-.wtimg {
+#icon {
   font-size: 80px;
   line-height: 48px;
 }
