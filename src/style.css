@@ -3,11 +3,11 @@ body {
   background-color: rgb(91, 92, 89);
 }
 
-#mainReport {
+/* #mainReport {
   background-image: url("sky1.jpg");
   background-size: cover;
   background-position: center bottom;
-}
+} */
 
 #description::first-letter {
   text-transform: capitalize;
@@ -54,10 +54,6 @@ p {
 }
 .highTemp {
   font-weight: bold;
-}
-#icon {
-  font-size: 80px;
-  line-height: 48px;
 }
 .wtdetail {
   font-size: 18px;

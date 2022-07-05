@@ -1,5 +1,6 @@
 var apiKey = `9f60d7631c91fefe3d27ab9b78997410`;
 var units = "metric";
+var unit_symbol = "°C";
 var temperatureInCity;
 var currentCity;
 var apiRequest = `https://api.openweathermap.org/data/2.5/weather?`;
@@ -73,11 +74,13 @@ function apiAccess() {
 
 function showTemperatureInF() {
   units = "imperial";
+  unit_symbol = "°F";
   apiAccess();
 }
 
 function showTemperatureInC() {
   units = "metric";
+  unit_symbol = "°C";
   apiAccess();
 }
 
@@ -102,7 +105,7 @@ function showTemperature(response) {
   let temp_min = Math.round(response.data.main.temp_min);
   let temp_max = Math.round(response.data.main.temp_max);
   let temp_max_min = document.querySelector("#max_min");
-  temp_max_min.innerHTML = `${temp_max}°C / ${temp_min}°C `;
+  temp_max_min.innerHTML = `${temp_max}${unit_symbol} / ${temp_min}${unit_symbol}`;
 
   currentCity = response.data.name;
   let currentLocation = document.querySelector("#location");
