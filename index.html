@@ -48,65 +48,89 @@
               <h1 class="card-title location pt-2 text-center" id="location">
                 BERLIN
               </h1>
-              <div class="row">
+              <div class="row m-4">
                 <div class="row">
-                  <div class="col pt-2">
-                    <h1 id="tempNow">10</h1>
-                  </div>
-                  <div class="col-6">
-                    <h5 class="float-left">
-                      <div
-                        class="btn-group"
-                        role="group"
-                        aria-label="Basic radio toggle button group"
-                      >
-                        <input
-                          type="radio"
-                          class="btn-check"
-                          name="btnradio"
-                          id="btn-celsius"
-                          autocomplete="off"
-                          checked
-                        />
-                        <label
-                          class="btn btn-outline-primary"
-                          for="btn-celsius"
+                  <div class="row">
+                    <div class="col pt-2">
+                      <h1 id="tempNow">10</h1>
+                    </div>
+
+                    <div class="col-6">
+                      <h5 class="float-left">
+                        <div
+                          class="btn-group"
+                          role="group"
+                          aria-label="Basic radio toggle button group"
                         >
-                          °C
-                        </label>
-                        <input
-                          type="radio"
-                          class="btn-check"
-                          name="btnradio"
-                          id="btn-fahrenheit"
-                          autocomplete="off"
-                        />
-                        <label
-                          class="btn btn-outline-primary"
-                          for="btn-fahrenheit"
-                        >
-                          °F
-                        </label>
+                          <input
+                            type="radio"
+                            class="btn-check"
+                            name="btnradio"
+                            id="btn-celsius"
+                            autocomplete="off"
+                            checked
+                          />
+                          <label
+                            class="btn btn-outline-primary"
+                            for="btn-celsius"
+                          >
+                            °C
+                          </label>
+                          <input
+                            type="radio"
+                            class="btn-check"
+                            name="btnradio"
+                            id="btn-fahrenheit"
+                            autocomplete="off"
+                          />
+                          <label
+                            class="btn btn-outline-primary"
+                            for="btn-fahrenheit"
+                          >
+                            °F
+                          </label>
+                        </div>
+                      </h5>
+                    </div>
+                    <div class="col pt-2">
+                      <div class="wtimg" id="icon">⛅</div>
+                      <div class="wtdetail m-2" id="description">
+                        Partially cloudy
                       </div>
-                    </h5>
+                    </div>
                   </div>
-                  <div class="col pt-2">
-                    <div class="wtimg">⛅</div>
+                  <div class="row m-2">
+                    <div class="card">
+                      <div class="card-body overflow-auto" id="more-details">
+                        <div class="row">
+                          <div class="col">
+                            <h6 class="wtdetail">Sunrise</h6>
+                            <p class="wtmeasure" id="sunrise">6.30</p>
+                          </div>
+                          <div class="col">
+                            <h6 class="wtdetail">Sunset</h6>
+                            <p class="wtmeasure" id="sunset">5.40</p>
+                          </div>
+                          <div class="col">
+                            <h6 class="wtdetail">Humidity</h6>
+                            <p class="wtmeasure" id="humidity">50%</p>
+                          </div>
+                          <div class="col">
+                            <h6 class="wtdetail">wind</h6>
+                            <p class="wtmeasure" id="windSpeed">24 km/h</p>
+                          </div>
+                          <div class="col">
+                            <h6 class="wtdetail">Air Pressure</h6>
+                            <p class="wtmeasure" id="air_pressure">1014 hPa</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-
-                <div class="col pt-2">
-                  <h6 class="wtdetail">Humidity</h6>
-                  <p class="wtmeasure" id="humidity">50%</p>
-
-                  <h6 class="wtdetail">wind</h6>
-                  <p class="wtmeasure" id="windSpeed">24 km/h</p>
-
-                  <h6 class="wtdetail">Air Pressure</h6>
-                  <p class="wtmeasure" id="air_pressure">1014 hPa</p>
                 </div>
               </div>
               <div class="row pt-2">
+                <small>Last updated</small>
                 <p class="day" id="current-date">May 06 Monday 06:30 PM</p>
               </div>
             </div>

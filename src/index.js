@@ -102,6 +102,8 @@ function showTemperature(response) {
   let humidity = response.data.main.humidity;
   let airPressure = Math.round(response.data.main.pressure);
   let wind = Math.round(response.data.wind.speed);
+  let wtDescription = response.data.weather[0].description;
+
   let tempNowHeader = document.querySelector("#tempNow");
   tempNowHeader.innerHTML = temperatureInCity;
   let currentLocation = document.querySelector("#location");
@@ -112,6 +114,8 @@ function showTemperature(response) {
   windSpeed.innerHTML = `${wind} km/h`;
   let pressure = document.querySelector("#air_pressure");
   pressure.innerHTML = `${airPressure} hPa`;
+  let weather_details = document.querySelector("#description");
+  weather_details.innerHTML = `${wtDescription}`;
 
   displayCurrentDate();
 }

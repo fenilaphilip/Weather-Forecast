@@ -2,14 +2,18 @@ body {
   font-family: Cerebri Sans, Helvetica, Arial, sans-serif;
   background-color: rgb(91, 92, 89);
 }
+/*
 #mainReport {
-  height: 500px;
   background-image: url("sky1.jpg");
   background-size: cover;
   background-position: center bottom;
 }
+*/
 #weatherforecast {
   background-color: whitesmoke;
+}
+#btn-celsius {
+  color: black;
 }
 h1 {
   font-size: 40px;
