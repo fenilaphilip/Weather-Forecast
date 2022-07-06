@@ -111,12 +111,17 @@ function showTemperature(response) {
   let currentLocation = document.querySelector("#location");
   currentLocation.innerHTML = `${currentCity.toUpperCase()}`;
 
+  let wtDescription = response.data.weather[0].description;
+  let weather_details = document.querySelector("#description");
+  weather_details.innerHTML = `${wtDescription}`;
+
   let wt_icon = response.data.weather[0].icon;
   let icon_element = document.querySelector("#icon");
   icon_element.setAttribute(
     "src",
     ` http://openweathermap.org/img/wn/${wt_icon}@2x.png`
   );
+  icon_element.setAttribute("alt", `${wtDescription}`);
 
   let humidity = response.data.main.humidity;
   let humid = document.querySelector("#humidity");
@@ -129,10 +134,6 @@ function showTemperature(response) {
   let wind = Math.round(response.data.wind.speed);
   let windSpeed = document.querySelector("#windSpeed");
   windSpeed.innerHTML = `${wind} km/h`;
-
-  let wtDescription = response.data.weather[0].description;
-  let weather_details = document.querySelector("#description");
-  weather_details.innerHTML = `${wtDescription}`;
 
   let sunrise =
     new Date(response.data.sys.sunrise * 1000).getHours() +
