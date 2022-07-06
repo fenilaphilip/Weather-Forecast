@@ -33,6 +33,20 @@ function displayCurrentDate() {
 
   let month = months[now.getMonth()];
   let date = now.getDate();
+  let ordinal = "";
+  if (date === 1 || date === 21 || date === 31) {
+    ordinal = "st";
+  } else {
+    if (date === 2 || date === 22) {
+      ordinal = "nd";
+    } else {
+      if (date === 3 || date === 23) {
+        ordinal = "rd";
+      } else {
+        ordinal = "th";
+      }
+    }
+  }
   let day = days[now.getDay()];
   let hour = now.getHours();
   let minute = now.getMinutes();
@@ -55,7 +69,7 @@ function displayCurrentDate() {
     }
   }
   let CurrentDate = document.querySelector("#current-date");
-  CurrentDate.innerHTML = `${month} ${date} ${day} ${time}`;
+  CurrentDate.innerHTML = `${day} ${date}${ordinal} ${month} ${time}`;
 }
 
 function weatherInThisCity(event) {
