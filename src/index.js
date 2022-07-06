@@ -55,21 +55,22 @@ function displayCurrentDate() {
     minute = `0${minute}`;
   }
   if (hour > 12) {
-    hour = hour - 12;
-    if (hour < 10) {
-      time = `0${hour}:${minute} PM`;
+    let hourIn12Format = hour - 12;
+    if (hourIn12Format < 10) {
+      time = `0${hourIn12Format}:${minute} PM`;
     } else {
-      time = `${hour}:${minute} PM`;
+      time = `${hourIn12Format}:${minute} PM`;
     }
   } else {
-    if (hour < 10) {
-      time = `0${hour}:${minute} AM`;
+    if (hourIn12Format < 10) {
+      time = `0${hourIn12Format}:${minute} AM`;
     } else {
-      time = `${hour}:${minute} AM`;
+      time = `${hourIn12Format}:${minute} AM`;
     }
   }
   let CurrentDate = document.querySelector("#current-date");
   CurrentDate.innerHTML = `${day} ${date}${ordinal} ${month} ${time}`;
+  showHourlyforecast(hour);
 }
 
 function weatherInThisCity(event) {
@@ -100,14 +101,17 @@ function showTemperatureInC() {
 
 function showHourlyforecast(currentHour) {
   let forecastList = document.querySelector("#hourly-forecast");
-  // forecastList.appendChild(
-  //   `<li class="row">
-  //        <span class="col">12:00</span>
-  //        <span class="col">⛅</span>
-  //        <span class="col">Partially cloudy</span>
-  //        <span class="col">22°C</span>
-  //      </li>`
-  // );
+  let listitem = "";
+  for (let i = 0; currentHour < 25; i++) {
+    listitem += `<li class="row mt-4">
+         <span class="col">${currentHour}:00</span>
+         <span class="col">⛅</span>
+         <span class="col-4">Partially cloudy</span>
+         <span class="col">22°C</span>
+       </li>`;
+    currentHour += 1;
+  }
+  forecastList.innerHTML = `${listitem}`;
 }
 
 function showTemperature(response) {
@@ -181,7 +185,6 @@ function currentLocation(event) {
 }
 
 displayCurrentDate();
-showHourlyforecast();
 
 let search = document.querySelector("#search-button");
 search.addEventListener("submit", weatherInThisCity);
