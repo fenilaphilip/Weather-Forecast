@@ -3,6 +3,7 @@ var units = "metric";
 var unit_symbol = "°C";
 var temperatureInCity;
 var currentCity;
+var days = [];
 var apiRequest = `https://api.openweathermap.org/data/2.5/weather?`;
 
 function displayCurrentDate() {
@@ -21,7 +22,7 @@ function displayCurrentDate() {
     "November",
     "December",
   ];
-  let days = [
+  days = [
     "Sunday",
     "Monday",
     "Tuesday",
@@ -73,6 +74,7 @@ function displayCurrentDate() {
   let CurrentDate = document.querySelector("#current-date");
   CurrentDate.innerHTML = `${day} ${date}${ordinal} ${month} ${time}`;
   showHourlyforecast(hour);
+  oneWeekWeatherforecast();
 }
 
 function weatherInThisCity(event) {
@@ -87,33 +89,6 @@ function apiAccess() {
   let queryParams = `q=${currentCity}&units=${units}&appid=${apiKey}`;
   let apiUrl = `${apiRequest}${queryParams}`;
   axios.get(apiUrl).then(showTemperature);
-}
-
-function showTemperatureInF() {
-  units = "imperial";
-  unit_symbol = "°F";
-  apiAccess();
-}
-
-function showTemperatureInC() {
-  units = "metric";
-  unit_symbol = "°C";
-  apiAccess();
-}
-
-function showHourlyforecast(currentHour) {
-  let forecastList = document.querySelector("#hourly-forecast");
-  let listitem = "";
-  for (let i = 0; currentHour < 25; i++) {
-    listitem += `<li class="row mt-4">
-         <span class="col">${currentHour}:00</span>
-         <span class="col">⛅</span>
-         <span class="col-4">Partially cloudy</span>
-         <span class="col">22°C</span>
-       </li>`;
-    currentHour += 1;
-  }
-  forecastList.innerHTML = `${listitem}`;
 }
 
 function showTemperature(response) {
@@ -139,7 +114,7 @@ function showTemperature(response) {
   let icon_element = document.querySelector("#icon");
   icon_element.setAttribute(
     "src",
-    ` http://openweathermap.org/img/wn/${wt_icon}@2x.png`
+    ` https://openweathermap.org/img/wn/${wt_icon}@2x.png`
   );
   icon_element.setAttribute("alt", `${wtDescription}`);
 
@@ -170,6 +145,49 @@ function showTemperature(response) {
   sun_set.innerHTML = `${sunset}`;
 
   displayCurrentDate();
+}
+
+function showTemperatureInF() {
+  units = "imperial";
+  unit_symbol = "°F";
+  apiAccess();
+}
+
+function showTemperatureInC() {
+  units = "metric";
+  unit_symbol = "°C";
+  apiAccess();
+}
+
+function showHourlyforecast(currentHour) {
+  let forecastList = document.querySelector("#hourly-forecast");
+  let listitem = "";
+  for (let i = 0; i < 24; i++) {
+    const hour = (i + currentHour) % 24;
+    listitem += `<li class="row mt-4">
+         <span class="col">${hour}:00</span>
+         <span class="col">⛅</span>
+         <span class="col-4">Partially cloudy</span>
+         <span class="col">22°C</span>
+       </li>`;
+  }
+  forecastList.innerHTML = `${listitem}`;
+}
+
+function oneWeekWeatherforecast() {
+  let weekList = document.querySelector("#oneWeekForecast");
+  let list = "";
+  let getNumDay = new Date().getDay();
+  for (var i = 0; i < 7; i++) {
+    const currentDay = (i + getNumDay) % 7;
+    list += `<li class="row mt-4">
+         <span class="col"> ${days[currentDay]}</span>
+         <span class="col">⛅</span>
+         <span class="col-4">Partially cloudy</span>
+         <span class="col">22°C</span>
+       </li>`;
+  }
+  weekList.innerHTML = `${list}`;
 }
 
 function showLocation(position) {
