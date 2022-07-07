@@ -54,14 +54,16 @@ function displayCurrentDate() {
   if (minute < 10) {
     minute = `0${minute}`;
   }
+  let hourIn12Format = "";
   if (hour > 12) {
-    let hourIn12Format = hour - 12;
+    hourIn12Format = hour - 12;
     if (hourIn12Format < 10) {
       time = `0${hourIn12Format}:${minute} PM`;
     } else {
       time = `${hourIn12Format}:${minute} PM`;
     }
   } else {
+    hourIn12Format = hour;
     if (hourIn12Format < 10) {
       time = `0${hourIn12Format}:${minute} AM`;
     } else {
