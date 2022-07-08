@@ -4,7 +4,8 @@ body {
 }
 
 #mainReport {
-  background-image: url("sky1.jpg");
+  width: 100%;
+  background-image: url("sky3.jpg");
   background-size: cover;
   background-position: center bottom;
 }
@@ -16,6 +17,9 @@ body {
   opacity: 0.9;
   margin: 0;
   padding: 20px;
+}
+#updation {
+  color: rgba(0, 1, 2, 0.671);
 }
 
 #description::first-letter {
