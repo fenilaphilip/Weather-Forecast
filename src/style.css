@@ -11,9 +11,9 @@ body {
 }
 
 #more-details {
-  box-shadow: 20px 15px 30px 5px rgba(50, 54, 70, 0.521);
+  box-shadow: 10px 15px 20px 5px rgba(0, 1, 7, 0.521);
   border-radius: 30px;
-  background-color: rgba(223, 223, 223, 0.452);
+  background-color: rgba(223, 223, 223, 0.288);
   opacity: 0.9;
   margin: 0;
   padding: 20px;
@@ -29,6 +29,14 @@ body {
 #weatherforecast {
   background-color: whitesmoke;
 }
+/* #hourlyforecast,
+#weeklyforecast {
+  background: radial-gradient(
+    circle at 0.7% 1%,
+    rgba(10, 216, 65, 0.644) 0%,
+    rgba(36, 18, 70, 0.541) 100.2%
+  );
+} */
 
 h1 {
   font-size: 40px;
