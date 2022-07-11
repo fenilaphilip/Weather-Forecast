@@ -181,10 +181,12 @@ function oneWeekWeatherforecast() {
   for (var i = 0; i < 7; i++) {
     const currentDay = (i + getNumDay) % 7;
     list += `<li class="row mt-4">
-         <span class="col"> ${days[currentDay]}</span>
-         <span class="col">⛅</span>
-         <span class="col-4">Partially cloudy</span>
-         <span class="col">22°C</span>
+        <span class="col"> ${days[currentDay]}</span>
+         <span class="col-2">⛅</span>
+        <span class="col-4">Partially cloudy</span>
+        <div class="col-sm-3">
+         <span>22°C </span>/<span>12°C</span>
+        </div>
        </li>`;
   }
   weekList.innerHTML = `${list}`;

@@ -27,16 +27,17 @@ body {
 }
 
 #weatherforecast {
-  background-color: whitesmoke;
+  background-color: rgba(219, 223, 222, 0.603);
 }
-/* #hourlyforecast,
-#weeklyforecast {
+
+.card {
   background: radial-gradient(
-    circle at 0.7% 1%,
-    rgba(10, 216, 65, 0.644) 0%,
-    rgba(36, 18, 70, 0.541) 100.2%
+    circle at 0.8% 1%,
+    rgba(156, 194, 165, 0.404) 40%,
+    rgba(159, 149, 177, 0.295) 60.2%,
+    rgba(219, 212, 203, 0.616) 100.2%
   );
-} */
+}
 
 h1 {
   font-size: 40px;
@@ -82,5 +83,5 @@ p {
 }
 #hourlyforecast,
 #weeklyforecast {
-  height: 300px;
+  height: 400px;
 }
