@@ -4,7 +4,8 @@ var unit_symbol = "°C";
 var temperatureInCity;
 var currentCity;
 var days = [];
-var apiRequest = `https://api.openweathermap.org/data/2.5/weather?`;
+var apiRequestCurrent = `https://api.openweathermap.org/data/2.5/weather?`;
+var apiRequestForecast = `https://api.openweathermap.org/data/2.5/onecall?`;
 
 function displayCurrentDate() {
   let now = new Date();
@@ -87,7 +88,7 @@ function weatherInThisCity(event) {
 
 function apiAccess() {
   let queryParams = `q=${currentCity}&units=${units}&appid=${apiKey}`;
-  let apiUrl = `${apiRequest}${queryParams}`;
+  let apiUrl = `${apiRequestCurrent}${queryParams}`;
   axios.get(apiUrl).then(showTemperature);
 }
 
@@ -196,7 +197,7 @@ function showLocation(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let queryParams = `lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
-  let apiUrl = `${apiRequest}${queryParams}`;
+  let apiUrl = `${apiRequestCurrent}${queryParams}`;
 
   axios.get(apiUrl).then(showTemperature);
 }
