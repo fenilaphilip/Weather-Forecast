@@ -4,7 +4,7 @@ var unit_symbol = "°C";
 var temperatureInCity;
 var currentCity;
 var days = [];
-var apiRequest = `https://api.openweathermap.org/data/2.5/weather?`;
+var apiRequest = `https://api.openweathermap.org/data/2.5/onecall?`;
 
 function displayCurrentDate() {
   let now = new Date();
@@ -93,24 +93,24 @@ function apiAccess() {
 
 function showTemperature(response) {
   console.log(response);
-  temperatureInCity = Math.round(response.data.main.temp);
+  temperatureInCity = Math.round(response.data.current.temp);
   let tempNowHeader = document.querySelector("#tempNow");
   tempNowHeader.innerHTML = temperatureInCity;
 
-  let temp_min = Math.round(response.data.main.temp_min);
-  let temp_max = Math.round(response.data.main.temp_max);
-  let temp_max_min = document.querySelector("#max_min");
-  temp_max_min.innerHTML = `${temp_max}${unit_symbol} / ${temp_min}${unit_symbol}`;
+  // let temp_min = Math.round(response.data.main.temp_min);
+  // let temp_max = Math.round(response.data.main.temp_max);
+  // let temp_max_min = document.querySelector("#max_min");
+  // temp_max_min.innerHTML = `${temp_max}${unit_symbol} / ${temp_min}${unit_symbol}`;
 
-  currentCity = response.data.name;
-  let currentLocation = document.querySelector("#location");
-  currentLocation.innerHTML = `${currentCity.toUpperCase()}`;
+  // currentCity = response.data.name;
+  // let currentLocation = document.querySelector("#location");
+  // currentLocation.innerHTML = `${currentCity.toUpperCase()}`;
 
-  let wtDescription = response.data.weather[0].description;
+  let wtDescription = response.data.current.weather[0].description;
   let weather_details = document.querySelector("#description");
   weather_details.innerHTML = `${wtDescription}`;
 
-  let wt_icon = response.data.weather[0].icon;
+  let wt_icon = response.data.current.weather[0].icon;
   let icon_element = document.querySelector("#icon");
   icon_element.setAttribute(
     "src",
@@ -118,29 +118,29 @@ function showTemperature(response) {
   );
   icon_element.setAttribute("alt", `${wtDescription}`);
 
-  let humidity = response.data.main.humidity;
+  let humidity = response.data.current.humidity;
   let humid = document.querySelector("#humidity");
   humid.innerHTML = `${humidity} %`;
 
-  let airPressure = Math.round(response.data.main.pressure);
+  let airPressure = Math.round(response.data.current.pressure);
   let pressure = document.querySelector("#air_pressure");
   pressure.innerHTML = `${airPressure} hPa`;
 
-  let wind = Math.round(response.data.wind.speed);
+  let wind = Math.round(response.data.current.wind_speed);
   let windSpeed = document.querySelector("#windSpeed");
   windSpeed.innerHTML = `${wind} km/h`;
 
   let sunrise =
-    new Date(response.data.sys.sunrise * 1000).getHours() +
+    new Date(response.data.current.sunrise * 1000).getHours() +
     `:` +
-    new Date(response.data.sys.sunrise * 1000).getMinutes();
+    new Date(response.data.current.sunrise * 1000).getMinutes();
   let sun_rise = document.querySelector("#sunrise");
   sun_rise.innerHTML = `${sunrise}`;
 
   let sunset =
-    new Date(response.data.sys.sunset * 1000).getHours() +
+    new Date(response.data.current.sunset * 1000).getHours() +
     `:` +
-    new Date(response.data.sys.sunset * 1000).getMinutes();
+    new Date(response.data.current.sunset * 1000).getMinutes();
   let sun_set = document.querySelector("#sunset");
   sun_set.innerHTML = `${sunset}`;
 
