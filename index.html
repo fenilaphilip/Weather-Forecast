@@ -16,15 +16,18 @@
   </head>
   <body>
     <div class="container" id="weatherforecast">
-      <nav class="navbar navbar-expand-lg bg-light">
+      <nav class="navbar navbar-expand-lg">
         <div class="container">
           <div>
             <a class="navbar-brand" href="#">WEATHER FORECAST</a>
-            <a class="btn btn-outline-success m-2" id="location-button">
-              Current Location
-            </a>
           </div>
           <form class="d-flex" role="search" id="search-button">
+            <button
+              class="btn btn-outline-success me-2"
+              title="Current location"
+            >
+              <img src="src/location.png" id="location-img-btn" />
+            </button>
             <input
               class="form-control me-2"
               placeholder="Enter city name"
@@ -174,10 +177,10 @@
       </div>
       <div class="row mt-4">
         <p>
+          <i>Created by Fenila Sosa Philip</i>
           <a href="https://github.com/fenilaphilip/Weather-Forecast">
             See source in GitHub..
           </a>
-          <i>Created by Fenila Sosa Philip</i>
         </p>
       </div>
     </div>

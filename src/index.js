@@ -214,6 +214,6 @@ let tempF = document.querySelector("#btn-fahrenheit");
 tempF.addEventListener("click", showTemperatureInF);
 let tempC = document.querySelector("#btn-celsius");
 tempC.addEventListener("click", showTemperatureInC);
-let locationNow = document.querySelector("#location-button");
+let locationNow = document.querySelector("#location-img-btn");
 locationNow.addEventListener("click", currentLocation);
 navigator.geolocation.getCurrentPosition(showLocation);

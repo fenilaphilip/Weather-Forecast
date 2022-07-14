@@ -27,7 +27,12 @@ body {
 }
 
 #weatherforecast {
-  background-color: rgba(219, 223, 222, 0.603);
+  background: radial-gradient(
+    circle at 0.8% 1%,
+    rgba(167, 204, 192, 0.781) 40%,
+    rgba(167, 233, 148, 0.589) 60.2%,
+    rgba(204, 83, 139, 0.226) 100.2%
+  );
 }
 
 .card {
@@ -50,8 +55,9 @@ h1 {
   color: black;
 }
 
-.location {
-  text-align: left;
+#location-img-btn {
+  width: 20px;
+  height: 22px;
 }
 #tempNow {
   font-size: 80px;
