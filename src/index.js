@@ -28,6 +28,11 @@ function showLocation(position) {
   axios.get(apiUrl).then(showTemperature);
 }
 
+function show_london() {
+  currentCity = "London";
+  apiAccess();
+}
+
 function weatherInThisCity(event) {
   event.preventDefault();
   let searchBox = document.querySelector("#searched-city");
@@ -67,4 +72,5 @@ let tempC = document.querySelector("#btn-celsius");
 tempC.addEventListener("click", showTemperatureInC);
 let locationNow = document.querySelector("#location-img-btn");
 locationNow.addEventListener("click", currentLocation);
-navigator.geolocation.getCurrentPosition(showLocation);
+
+navigator.geolocation.getCurrentPosition(showLocation, show_london);

@@ -48,13 +48,14 @@
         <div class="col">
           <div class="card">
             <div class="card-body" id="mainReport">
-              <h1 class="card-title location pt-2 text-center" id="location">
-                BERLIN
-              </h1>
+              <h1
+                class="card-title location pt-2 text-center"
+                id="location"
+              ></h1>
 
               <div class="row m-4">
                 <div class="col pt-2">
-                  <h1 id="tempNow">10</h1>
+                  <h1 id="tempNow"></h1>
                 </div>
 
                 <div class="col-6">
@@ -92,15 +93,11 @@
                   </h5>
                 </div>
                 <div class="col-sm-3">
-                  <img
-                    id="icon"
-                    alt="raining"
-                    src="https://openweathermap.org/img/wn/10d@2x.png"
-                  />
-                  <div class="wtdetail" id="description">Partially cloudy</div>
+                  <img id="icon" />
+                  <div class="wtdetail" id="description"></div>
                   <div class="wtdetail">
                     Max / Min :
-                    <span class="wtmeasure" id="max_min"> 25°C / 12°C </span>
+                    <span class="wtmeasure" id="max_min"></span>
                   </div>
                 </div>
               </div>
@@ -109,23 +106,23 @@
                   <div class="row">
                     <div class="col-sm-2">
                       <h6 class="wtdetail">Humidity</h6>
-                      <p class="wtmeasure" id="humidity">50%</p>
+                      <p class="wtmeasure" id="humidity"></p>
                     </div>
                     <div class="col-sm-3">
                       <h6 class="wtdetail">wind</h6>
-                      <p class="wtmeasure" id="windSpeed">24 km/h</p>
+                      <p class="wtmeasure" id="windSpeed"></p>
                     </div>
                     <div class="col-sm-2">
                       <h6 class="wtdetail">Air Pressure</h6>
-                      <p class="wtmeasure" id="air_pressure">1014 hPa</p>
+                      <p class="wtmeasure" id="air_pressure"></p>
                     </div>
                     <div class="col-sm-3">
                       <h6 class="wtdetail">Sunrise</h6>
-                      <p class="wtmeasure" id="sunrise">6.30</p>
+                      <p class="wtmeasure" id="sunrise"></p>
                     </div>
                     <div class="col-sm-2">
                       <h6 class="wtdetail">Sunset</h6>
-                      <p class="wtmeasure" id="sunset">5.40</p>
+                      <p class="wtmeasure" id="sunset"></p>
                     </div>
                   </div>
                 </div>
@@ -133,7 +130,7 @@
 
               <div class="row pt-2" id="updation">
                 <small>Last updated</small>
-                <p class="day" id="current-date">May 06 Monday 06:30 PM</p>
+                <p class="day" id="current-date"></p>
               </div>
             </div>
           </div>
@@ -146,14 +143,7 @@
           </div>
           <div class="card" id="hourlyforecast">
             <div class="card-body overflow-auto">
-              <ul id="hourly-forecast">
-                <li class="row">
-                  <span class="col">11:00</span>
-                  <span class="col">⛅</span>
-                  <span class="col">Partially cloudy</span>
-                  <span class="col">22°C</span>
-                </li>
-              </ul>
+              <ul id="hourly-forecast"></ul>
             </div>
           </div>
         </div>
@@ -163,14 +153,7 @@
           </div>
           <div class="card">
             <div class="card-body overflow-auto" id="weeklyforecast">
-              <ul id="oneWeekForecast">
-                <li class="row">
-                  <span class="col">Tomorrow</span>
-                  <span class="col">⛅</span>
-                  <span class="col">Partially cloudy</span>
-                  <span class="col">22°C</span>
-                </li>
-              </ul>
+              <ul id="oneWeekForecast"></ul>
             </div>
           </div>
         </div>
