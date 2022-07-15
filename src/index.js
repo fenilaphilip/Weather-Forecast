@@ -180,7 +180,7 @@ function apiAccess_forcast(lat, lon) {
   let queryParams = `lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
   let apiUrl = `${apiRequestForecast}${queryParams}`;
   axios.get(apiUrl).then(display_hourly_forecast);
-  oneWeekWeatherforecast();
+  axios.get(apiUrl).then(display_7days_forecast);
 }
 
 function display_hourly_forecast(response) {
@@ -203,18 +203,22 @@ function display_hourly_forecast(response) {
   forecastList.innerHTML = `${listitem}`;
 }
 
-function oneWeekWeatherforecast() {
+function display_7days_forecast(response) {
   let weekList = document.querySelector("#oneWeekForecast");
   let list = "";
   let getNumDay = new Date().getDay();
   for (var i = 0; i < 7; i++) {
     const currentDay = (i + getNumDay) % 7;
+    const image = response.data.daily[i].weather[0].icon;
+    const img_means = response.data.daily[i].weather[0].description;
+    const tempMax = Math.round(response.data.daily[i].temp.max);
+    const tempMin = Math.round(response.data.daily[i].temp.min);
     list += `<li class="row mt-4">
         <span class="col"> ${days[currentDay]}</span>
-         <span class="col-2">⛅</span>
-        <span class="col-4">Partially cloudy</span>
+         <span class="col-2">${image}</span>
+        <span class="col-4">${img_means}</span>
         <div class="col-sm-3">
-         <span>22°C </span>/<span>12°C</span>
+         <span>${tempMax}${unit_symbol} </span>/<span>${tempMin}${unit_symbol}</span>
         </div>
        </li>`;
   }
