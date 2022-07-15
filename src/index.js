@@ -86,8 +86,6 @@ function displayCurrentDate() {
   }
   let CurrentDate = document.querySelector("#current-date");
   CurrentDate.innerHTML = `${day} ${date}${ordinal} ${month} ${time}`;
-  showHourlyforecast(hour);
-  oneWeekWeatherforecast();
 }
 
 function currentLocation(event) {
@@ -181,23 +179,25 @@ function showTemperature(response) {
 function apiAccess_forcast(lat, lon) {
   let queryParams = `lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
   let apiUrl = `${apiRequestForecast}${queryParams}`;
-  axios.get(apiUrl).then(hourly_forecast);
+  axios.get(apiUrl).then(display_hourly_forecast);
+  oneWeekWeatherforecast();
 }
 
-function hourly_forecast(response) {
-  console.log(response);
-}
-
-function showHourlyforecast(currentHour) {
+function display_hourly_forecast(response) {
+  console.log(response.data);
+  let currentHour = new Date(response.data.current.dt * 1000).getHours();
   let forecastList = document.querySelector("#hourly-forecast");
   let listitem = "";
-  for (let i = 0; i < 24; i++) {
+  for (let i = 1; i < 24; i++) {
     const hour = (i + currentHour) % 24;
+    const image = response.data.hourly[i].weather[0].icon;
+    const img_means = response.data.hourly[i].weather[0].description;
+    const temp = Math.round(response.data.hourly[i].temp);
     listitem += `<li class="row mt-4">
          <span class="col">${hour}:00</span>
-         <span class="col">⛅</span>
-         <span class="col-4">Partially cloudy</span>
-         <span class="col">22°C</span>
+         <span class="col">${image}</span>
+         <span class="col-4">${img_means}</span>
+         <span class="col">${temp}${unit_symbol}</span>
        </li>`;
   }
   forecastList.innerHTML = `${listitem}`;
