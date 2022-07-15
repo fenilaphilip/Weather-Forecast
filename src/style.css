@@ -59,6 +59,7 @@ h1 {
   width: 20px;
   height: 22px;
 }
+
 #tempNow {
   font-size: 80px;
   text-align: right;
@@ -66,9 +67,6 @@ h1 {
   padding-right: 0;
 }
 
-#mrdeg {
-  font-size: small;
-}
 h6,
 p {
   text-align: center;
@@ -87,6 +85,7 @@ p {
   font-size: 15px;
   font-weight: bold;
 }
+
 #hourlyforecast,
 #weeklyforecast {
   height: 400px;

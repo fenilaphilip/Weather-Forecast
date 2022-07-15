@@ -139,7 +139,7 @@ function showTemperature(response) {
   let icon_element = document.querySelector("#icon");
   icon_element.setAttribute(
     "src",
-    ` https://openweathermap.org/img/wn/${wt_icon}@2x.png`
+    `https://openweathermap.org/img/wn/${wt_icon}@2x.png`
   );
   icon_element.setAttribute("alt", `${wtDescription}`);
 
@@ -193,11 +193,13 @@ function display_hourly_forecast(response) {
     const image = response.data.hourly[i].weather[0].icon;
     const img_means = response.data.hourly[i].weather[0].description;
     const temp = Math.round(response.data.hourly[i].temp);
-    listitem += `<li class="row mt-4">
-         <span class="col">${hour}:00</span>
-         <span class="col">${image}</span>
-         <span class="col-4">${img_means}</span>
-         <span class="col">${temp}${unit_symbol}</span>
+    listitem += `<li class="row mt-2">
+        <span class="col p-2">${hour}:00</span>
+        <span class="col wt-img">
+         <img src="https://openweathermap.org/img/wn/${image}@2x.png" width="40px"/>
+        </span>
+        <span class="col-4 p-2">${img_means}</span>
+        <span class="col p-2">${temp}${unit_symbol}</span>
        </li>`;
   }
   forecastList.innerHTML = `${listitem}`;
@@ -213,12 +215,14 @@ function display_7days_forecast(response) {
     const img_means = response.data.daily[i].weather[0].description;
     const tempMax = Math.round(response.data.daily[i].temp.max);
     const tempMin = Math.round(response.data.daily[i].temp.min);
-    list += `<li class="row mt-4">
-        <span class="col"> ${days[currentDay]}</span>
-         <span class="col-2">${image}</span>
-        <span class="col-4">${img_means}</span>
-        <div class="col-sm-3">
-         <span>${tempMax}${unit_symbol} </span>/<span>${tempMin}${unit_symbol}</span>
+    list += `<li class="row mt-2">
+        <span class="col p-2"> ${days[currentDay]}</span>
+        <span class="col-2 wt-img">
+          <img src="https://openweathermap.org/img/wn/${image}@2x.png" width="40px"/>
+        </span>
+        <span class="col-4 p-2">${img_means}</span>
+        <div class="col-sm-3 p-2">
+         <strong>${tempMax}${unit_symbol} </strong>/ ${tempMin}${unit_symbol}
         </div>
        </li>`;
   }
