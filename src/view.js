@@ -67,62 +67,26 @@ function displayCurrentDate() {
   CurrentDate.innerHTML = `${day} ${date}${ordinal} ${month} ${time}`;
 }
 
-function display_current_readings(response) {
-  console.log(response);
-  temperatureInCity = Math.round(response.data.main.temp);
-  let tempNowHeader = document.querySelector("#tempNow");
-  tempNowHeader.innerHTML = temperatureInCity;
-
-  let temp_min = Math.round(response.data.main.temp_min);
-  let temp_max = Math.round(response.data.main.temp_max);
-  let temp_max_min = document.querySelector("#max_min");
-  temp_max_min.innerHTML = `${temp_max}${unit_symbol} / ${temp_min}${unit_symbol}`;
-
-  currentCity = response.data.name;
-  let currentLocation = document.querySelector("#location");
-  currentLocation.innerHTML = `${currentCity.toUpperCase()}`;
-
-  let wtDescription = response.data.weather[0].description;
-  let weather_details = document.querySelector("#description");
-  weather_details.innerHTML = `${wtDescription}`;
-
-  let wt_icon = response.data.weather[0].icon;
+function display_current_readings(details) {
+  let city_name = `${details.city_name.toUpperCase()}`;
+  document.querySelector("#location").innerHTML = city_name;
+  document.querySelector("#tempNow").innerHTML = details.temp_current;
+  let min_max = `${details.temp_max}${unit_symbol} / ${details.temp_min}${unit_symbol}`;
+  document.querySelector("#max_min").innerHTML = min_max;
+  document.querySelector("#description").innerHTML = `${details.description}`;
+  document.querySelector("#humidity").innerHTML = `${details.humidity} %`;
+  document.querySelector("#air_pressure").innerHTML = `${details.pressure} hPa`;
+  document.querySelector("#windSpeed").innerHTML = `${details.wind_speed} km/h`;
+  let sunrise = details.sunrise.getHours() + `:` + details.sunrise.getMinutes();
+  document.querySelector("#sunrise").innerHTML = `${sunrise}`;
+  let sunset = details.sunset.getHours() + `:` + details.sunset.getMinutes();
+  document.querySelector("#sunset").innerHTML = `${sunset}`;
   let icon_element = document.querySelector("#icon");
-  icon_element.setAttribute(
-    "src",
-    `https://openweathermap.org/img/wn/${wt_icon}@2x.png`
-  );
-  icon_element.setAttribute("alt", `${wtDescription}`);
-
-  let humidity = response.data.main.humidity;
-  let humid = document.querySelector("#humidity");
-  humid.innerHTML = `${humidity} %`;
-
-  let airPressure = Math.round(response.data.main.pressure);
-  let pressure = document.querySelector("#air_pressure");
-  pressure.innerHTML = `${airPressure} hPa`;
-
-  let wind = Math.round(response.data.wind.speed);
-  let windSpeed = document.querySelector("#windSpeed");
-  windSpeed.innerHTML = `${wind} km/h`;
-
-  let sunrise =
-    new Date(response.data.sys.sunrise * 1000).getHours() +
-    `:` +
-    new Date(response.data.sys.sunrise * 1000).getMinutes();
-  let sun_rise = document.querySelector("#sunrise");
-  sun_rise.innerHTML = `${sunrise}`;
-
-  let sunset =
-    new Date(response.data.sys.sunset * 1000).getHours() +
-    `:` +
-    new Date(response.data.sys.sunset * 1000).getMinutes();
-  let sun_set = document.querySelector("#sunset");
-  sun_set.innerHTML = `${sunset}`;
+  icon_element.setAttribute("src", details.icon_image);
+  icon_element.setAttribute("alt", `${details.description}`);
 }
 
 function display_hourly_forecast(response) {
-  console.log(response.data);
   let currentHour = new Date(response.data.current.dt * 1000).getHours();
   let forecastList = document.querySelector("#hourly-forecast");
   let listitem = "";

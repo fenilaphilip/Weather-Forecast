@@ -3,3 +3,4 @@ var units = "metric";
 var unit_symbol = "°C";
 var apiRequestCurrent = `https://api.openweathermap.org/data/2.5/weather?`;
 var apiRequestForecast = `https://api.openweathermap.org/data/2.5/onecall?`;
+var default_city = "london";
