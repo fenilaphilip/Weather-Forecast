@@ -7,6 +7,18 @@ var days = [];
 var apiRequestCurrent = `https://api.openweathermap.org/data/2.5/weather?`;
 var apiRequestForecast = `https://api.openweathermap.org/data/2.5/onecall?`;
 
+function showTemperatureInF() {
+  units = "imperial";
+  unit_symbol = "°F";
+  apiAccess();
+}
+
+function showTemperatureInC() {
+  units = "metric";
+  unit_symbol = "°C";
+  apiAccess();
+}
+
 function displayCurrentDate() {
   let now = new Date();
   let months = [
@@ -78,6 +90,20 @@ function displayCurrentDate() {
   oneWeekWeatherforecast();
 }
 
+function currentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(showLocation);
+}
+
+function showLocation(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let queryParams = `lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
+  let apiUrl = `${apiRequestCurrent}${queryParams}`;
+
+  axios.get(apiUrl).then(showTemperature);
+}
+
 function weatherInThisCity(event) {
   event.preventDefault();
   let searchBox = document.querySelector("#searched-city");
@@ -145,19 +171,21 @@ function showTemperature(response) {
   let sun_set = document.querySelector("#sunset");
   sun_set.innerHTML = `${sunset}`;
 
+  let longitude = response.data.coord.lon;
+  let latitude = response.data.coord.lat;
+  apiAccess_forcast(latitude, longitude);
+
   displayCurrentDate();
 }
 
-function showTemperatureInF() {
-  units = "imperial";
-  unit_symbol = "°F";
-  apiAccess();
+function apiAccess_forcast(lat, lon) {
+  let queryParams = `lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
+  let apiUrl = `${apiRequestForecast}${queryParams}`;
+  axios.get(apiUrl).then(hourly_forecast);
 }
 
-function showTemperatureInC() {
-  units = "metric";
-  unit_symbol = "°C";
-  apiAccess();
+function hourly_forecast(response) {
+  console.log(response);
 }
 
 function showHourlyforecast(currentHour) {
@@ -191,20 +219,6 @@ function oneWeekWeatherforecast() {
        </li>`;
   }
   weekList.innerHTML = `${list}`;
-}
-
-function showLocation(position) {
-  let latitude = position.coords.latitude;
-  let longitude = position.coords.longitude;
-  let queryParams = `lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
-  let apiUrl = `${apiRequestCurrent}${queryParams}`;
-
-  axios.get(apiUrl).then(showTemperature);
-}
-
-function currentLocation(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(showLocation);
 }
 
 displayCurrentDate();
