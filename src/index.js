@@ -1,6 +1,5 @@
 var temperatureInCity;
 var currentCity;
-var days = [];
 
 function show_temperature_in_Fahrenheit() {
   units = "imperial";
@@ -81,9 +80,26 @@ function show_weather_forcast(lat, lon) {
   let apiUrl = `${apiRequestForecast}${queryParams}`;
   axios.get(apiUrl).then(function (response) {
     console.log(response);
+    let daily_readings = extract_7days_readings(response.data);
+    console.log(daily_readings);
     display_hourly_forecast(response);
-    display_7days_forecast(response);
+    display_7days_forecast(daily_readings);
   });
+}
+
+function extract_7days_readings(data) {
+  let readings = [];
+  for (var i = 0; i < 7; i++) {
+    let icon = data.daily[i].weather[0].icon;
+    let reading = {
+      image: `https://openweathermap.org/img/wn/${icon}@2x.png`,
+      description: data.daily[i].weather[0].description,
+      tempMax: Math.round(data.daily[i].temp.max),
+      tempMin: Math.round(data.daily[i].temp.min),
+    };
+    readings.push(reading);
+  }
+  return readings;
 }
 
 show_default_city();

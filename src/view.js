@@ -1,3 +1,13 @@
+var days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
 function display_current_date() {
   let now = new Date();
   let months = [
@@ -13,15 +23,6 @@ function display_current_date() {
     "October",
     "November",
     "December",
-  ];
-  days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
   ];
 
   let month = months[now.getMonth()];
@@ -107,24 +108,20 @@ function display_hourly_forecast(response) {
   forecastList.innerHTML = `${listitem}`;
 }
 
-function display_7days_forecast(response) {
+function display_7days_forecast(readings) {
   let weekList = document.querySelector("#oneWeekForecast");
   let list = "";
   let getNumDay = new Date().getDay();
   for (var i = 0; i < 7; i++) {
     const currentDay = (i + getNumDay) % 7;
-    const image = response.data.daily[i].weather[0].icon;
-    const img_means = response.data.daily[i].weather[0].description;
-    const tempMax = Math.round(response.data.daily[i].temp.max);
-    const tempMin = Math.round(response.data.daily[i].temp.min);
     list += `<li class="row mt-2">
         <span class="col p-2"> ${days[currentDay]}</span>
-        <span class="col-2 wt-img">
-          <img src="https://openweathermap.org/img/wn/${image}@2x.png" width="40px"/>
+        <span class="col wt-img">
+          <img src="${readings[i].image}" width="40px"/>
         </span>
-        <span class="col-4 p-2">${img_means}</span>
+        <span class="col-4 p-2">${readings[i].description}</span>
         <div class="col-sm-3 p-2">
-         <strong>${tempMax}${unit_symbol} </strong>/ ${tempMin}${unit_symbol}
+         <strong>${readings[i].tempMax}${unit_symbol} </strong>/ ${readings[i].tempMin}${unit_symbol}
         </div>
        </li>`;
   }
