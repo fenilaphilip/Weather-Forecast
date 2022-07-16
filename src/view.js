@@ -1,4 +1,4 @@
-function displayCurrentDate() {
+function display_current_date() {
   let now = new Date();
   let months = [
     "January",

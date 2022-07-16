@@ -2,24 +2,24 @@ var temperatureInCity;
 var currentCity;
 var days = [];
 
-function showTemperatureInF() {
+function show_temperature_in_Fahrenheit() {
   units = "imperial";
   unit_symbol = "°F";
   show_weather_by_city(currentCity);
 }
 
-function showTemperatureInC() {
+function show_temperature_in_Celsius() {
   units = "metric";
   unit_symbol = "°C";
   show_weather_by_city(currentCity);
 }
 
-function currentLocation(event) {
+function current_location(event) {
   event.preventDefault();
-  navigator.geolocation.getCurrentPosition(showLocation);
+  navigator.geolocation.getCurrentPosition(show_location);
 }
 
-function showLocation(position) {
+function show_location(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let queryParams = `lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
@@ -29,7 +29,7 @@ function showLocation(position) {
     console.log(response);
     let current_details = extract_current_readings(response.data);
     display_current_readings(current_details);
-    displayCurrentDate();
+    display_current_date();
     show_weather_forcast(latitude, longitude);
   });
 }
@@ -39,7 +39,7 @@ function show_default_city() {
   show_weather_by_city(currentCity);
 }
 
-function weatherInThisCity(event) {
+function weather_in_this_city(event) {
   event.preventDefault();
   let searchBox = document.querySelector("#searched-city");
   currentCity = searchBox.value.trim();
@@ -54,7 +54,7 @@ function show_weather_by_city(city) {
     console.log(response);
     let current_details = extract_current_readings(response.data);
     display_current_readings(current_details);
-    displayCurrentDate();
+    display_current_date();
     let longitude = response.data.coord.lon;
     let latitude = response.data.coord.lat;
     show_weather_forcast(latitude, longitude);
@@ -89,12 +89,12 @@ function show_weather_forcast(lat, lon) {
 show_default_city();
 
 let search = document.querySelector("#search-button");
-search.addEventListener("submit", weatherInThisCity);
+search.addEventListener("submit", weather_in_this_city);
 let tempF = document.querySelector("#btn-fahrenheit");
-tempF.addEventListener("click", showTemperatureInF);
+tempF.addEventListener("click", show_temperature_in_Fahrenheit);
 let tempC = document.querySelector("#btn-celsius");
-tempC.addEventListener("click", showTemperatureInC);
+tempC.addEventListener("click", show_temperature_in_Celsius);
 let locationNow = document.querySelector("#location-img-btn");
-locationNow.addEventListener("click", currentLocation);
+locationNow.addEventListener("click", current_location);
 
-navigator.geolocation.getCurrentPosition(showLocation);
+navigator.geolocation.getCurrentPosition(show_location);
