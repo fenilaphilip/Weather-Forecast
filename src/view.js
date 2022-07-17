@@ -87,22 +87,18 @@ function display_current_readings(details) {
   icon_element.setAttribute("alt", `${details.description}`);
 }
 
-function display_hourly_forecast(response) {
-  let currentHour = new Date(response.data.current.dt * 1000).getHours();
+function display_hourly_forecast(readings) {
+  console.log(readings);
   let forecastList = document.querySelector("#hourly-forecast");
   let listitem = "";
   for (let i = 1; i < 24; i++) {
-    const hour = (i + currentHour) % 24;
-    const image = response.data.hourly[i].weather[0].icon;
-    const img_means = response.data.hourly[i].weather[0].description;
-    const temp = Math.round(response.data.hourly[i].temp);
     listitem += `<li class="row mt-2">
-        <span class="col p-2">${hour}:00</span>
+        <span class="col p-2">${readings[i].hour}:00</span>
         <span class="col wt-img">
-         <img src="https://openweathermap.org/img/wn/${image}@2x.png" width="40px"/>
+         <img src="${readings[i].image}" width="40px"/>
         </span>
-        <span class="col-4 p-2">${img_means}</span>
-        <span class="col p-2">${temp}${unit_symbol}</span>
+        <span class="col-4 p-2">${readings[i].description}</span>
+        <span class="col p-2">${readings[i].temp}${unit_symbol}</span>
        </li>`;
   }
   forecastList.innerHTML = `${listitem}`;

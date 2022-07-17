@@ -80,11 +80,29 @@ function show_weather_forcast(lat, lon) {
   let apiUrl = `${apiRequestForecast}${queryParams}`;
   axios.get(apiUrl).then(function (response) {
     console.log(response);
+    let hourly_readings = extract_hourly_readings(response.data);
+    console.log(hourly_readings);
     let daily_readings = extract_7days_readings(response.data);
     console.log(daily_readings);
-    display_hourly_forecast(response);
+    display_hourly_forecast(hourly_readings);
     display_7days_forecast(daily_readings);
   });
+}
+
+function extract_hourly_readings(data) {
+  let readings = [];
+  let currentHour = new Date(data.current.dt * 1000).getHours();
+  for (let i = 0; i < 24; i++) {
+    let icon = data.hourly[i].weather[0].icon;
+    let reading = {
+      hour: (i + currentHour) % 24,
+      image: `https://openweathermap.org/img/wn/${icon}@2x.png`,
+      description: data.hourly[i].weather[0].description,
+      temp: Math.round(data.hourly[i].temp),
+    };
+    readings.push(reading);
+  }
+  return readings;
 }
 
 function extract_7days_readings(data) {
