@@ -108,10 +108,16 @@ function display_7days_forecast(readings) {
   let weekList = document.querySelector("#oneWeekForecast");
   let list = "";
   let getNumDay = new Date().getDay();
-  for (var i = 0; i < 7; i++) {
+  let daysforecast = [];
+  for (let i = 0; i < 8; i++) {
     const currentDay = (i + getNumDay) % 7;
+    let day = `${days[currentDay]}`;
+    daysforecast.push(day);
+  }
+  daysforecast[1] = "Tomorrow";
+  for (let i = 1; i < 8; i++) {
     list += `<li class="row mt-2">
-        <span class="col p-2"> ${days[currentDay]}</span>
+        <span class="col p-2" id="day${i}"> ${daysforecast[i]}</span>
         <span class="col wt-img">
           <img src="${readings[i].image}" width="40px"/>
         </span>

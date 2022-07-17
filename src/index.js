@@ -107,7 +107,7 @@ function extract_hourly_readings(data) {
 
 function extract_7days_readings(data) {
   let readings = [];
-  for (var i = 0; i < 7; i++) {
+  for (let i = 0; i < 8; i++) {
     let icon = data.daily[i].weather[0].icon;
     let reading = {
       image: `https://openweathermap.org/img/wn/${icon}@2x.png`,

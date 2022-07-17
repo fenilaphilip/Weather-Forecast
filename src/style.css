@@ -74,6 +74,9 @@ p {
 .day {
   text-align: left;
 }
+#day1 {
+  color: red;
+}
 .highTemp {
   font-weight: bold;
 }
