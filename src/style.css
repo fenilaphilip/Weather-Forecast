@@ -5,7 +5,7 @@ body {
 
 #mainReport {
   width: 100%;
-  background-image: url("sky3.jpg");
+  background-image: url("background.jpg");
   background-size: cover;
   background-position: center bottom;
 }
