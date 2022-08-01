@@ -25,7 +25,6 @@ function show_location(position) {
   let apiUrl = `${apiRequestCurrent}${queryParams}`;
 
   axios.get(apiUrl).then(function (response) {
-    console.log(response);
     let current_details = extract_current_readings(response.data);
     display_current_readings(current_details);
     display_current_date();
@@ -50,7 +49,6 @@ function show_weather_by_city(city) {
   let queryParams = `q=${city}&units=${units}&appid=${apiKey}`;
   let apiUrl = `${apiRequestCurrent}${queryParams}`;
   axios.get(apiUrl).then(function (response) {
-    console.log(response);
     let current_details = extract_current_readings(response.data);
     display_current_readings(current_details);
     display_current_date();
@@ -79,11 +77,8 @@ function show_weather_forcast(lat, lon) {
   let queryParams = `lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
   let apiUrl = `${apiRequestForecast}${queryParams}`;
   axios.get(apiUrl).then(function (response) {
-    console.log(response);
     let hourly_readings = extract_hourly_readings(response.data);
-    console.log(hourly_readings);
     let daily_readings = extract_7days_readings(response.data);
-    console.log(daily_readings);
     display_hourly_forecast(hourly_readings);
     display_7days_forecast(daily_readings);
   });

@@ -88,7 +88,6 @@ function display_current_readings(details) {
 }
 
 function display_hourly_forecast(readings) {
-  console.log(readings);
   let forecastList = document.querySelector("#hourly-forecast");
   let listitem = "";
   for (let i = 1; i < 24; i++) {
