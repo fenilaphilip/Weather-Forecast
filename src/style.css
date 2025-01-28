@@ -1,95 +1,62 @@
 body {
   font-family: Cerebri Sans, Helvetica, Arial, sans-serif;
-  background-color: rgba(66, 65, 73, 0.514);
+  background-color: rgba(132, 148, 237, 0.356);
 }
-
-#mainReport {
-  width: 100%;
-  background-image: url("background.jpg");
-  background-size: cover;
-  background-position: center bottom;
+#report {
+  margin-top: 50px;
+  height: auto;
+  padding: 30px;
+  background-color: rgba(108, 137, 215, 0.229);
+  border-radius: 10px;
+  border: 2px solid black;
 }
-
-#more-details {
-  box-shadow: 10px 15px 20px 5px rgba(0, 1, 7, 0.521);
-  border-radius: 30px;
-  background-color: rgba(223, 223, 223, 0.288);
-  opacity: 0.9;
-  margin: 0;
+#search {
   padding: 20px;
 }
-#updation {
-  color: rgba(0, 1, 2, 0.671);
-}
-
-#description::first-letter {
-  text-transform: capitalize;
-}
-
-#weatherforecast {
-  background: radial-gradient(
-    circle at 0.8% 1%,
-    rgba(167, 204, 192, 0.781) 40%,
-    rgba(167, 233, 148, 0.589) 60.2%,
-    rgba(204, 83, 139, 0.226) 100.2%
-  );
-}
-
-.card {
-  background: radial-gradient(
-    circle at 0.8% 1%,
-    rgba(156, 194, 165, 0.404) 40%,
-    rgba(159, 149, 177, 0.295) 60.2%,
-    rgba(219, 212, 203, 0.616) 100.2%
-  );
-}
-
-h1 {
-  font-size: 40px;
-  line-height: 48px;
-  font-weight: 900;
-  margin: 1px auto;
-}
-
-h1 {
-  color: black;
-}
-
 #location-img-btn {
   width: 20px;
   height: 22px;
 }
 
-#tempNow {
-  font-size: 80px;
-  text-align: right;
+h1 {
+  padding: 10px;
+  font-size: 40px;
+  line-height: 48px;
   font-weight: 900;
-  padding-right: 0;
+  margin: 1px auto;
+  color: black;
 }
-
 h6,
 p {
   text-align: center;
 }
-.day {
-  text-align: left;
+#tempNow {
+  font-size: 80px;
+  text-align: center;
+  font-weight: 900;
+  padding: 10px;
+  margin: 10px;
 }
-#day1 {
-  color: red;
-}
-.highTemp {
-  font-weight: bold;
-}
-.wtdetail {
-  font-size: 18px;
-  color: rgb(117, 30, 15);
-}
-.wtmeasure {
-  font-size: 15px;
-  font-weight: bold;
+#description::first-letter {
+  text-transform: capitalize;
 }
 
-#hourlyforecast,
-#weeklyforecast {
-  height: 400px;
+#forecast {
+  text-align: center;
+  margin: 15rem;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-top: 2px dashed black;
+}
+
+@media only screen and (max-width: 420px) {
+  .seperationLine {
+    margin: auto;
+  }
+  #forecast {
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+  }
 }

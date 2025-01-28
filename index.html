@@ -1,174 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather App</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
-      crossorigin="anonymous"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link href="src/style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <div class="container" id="weatherforecast">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <div>
-            <a class="navbar-brand" href="#">WEATHER FORECAST</a>
-          </div>
-          <form class="d-flex" role="search" id="search-button">
-            <button
-              class="btn btn-outline-success me-2"
-              title="Current location"
-            >
-              <img src="src/location.png" id="location-img-btn" />
-            </button>
-            <input
-              class="form-control me-2"
-              placeholder="Enter city name"
-              aria-label="Search"
-              id="searched-city"
-            />
-            <button
-              class="btn btn-outline-success"
-              type="submit"
-              id="search-button"
-            >
-              Search
-            </button>
-          </form>
-        </div>
-      </nav>
-      <div class="row">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link href="src/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="text-center pt-2" id="report">
+      <div>
+        <form class="d-flex" role="search" id="search">
+          <button class="btn btn-outline-success me-2" title="Current location">
+            <img src="src/location.png" id="location-img-btn" />
+          </button>
+          <input class="form-control me-2" placeholder="Enter city name" aria-label="Search" id="searched-city" />
+          <button class="btn btn-outline-success" type="submit" id="search-button">
+            Search
+          </button>
+        </form>
+      </div>
+      <h1 id="location">Berlin</h1>
+      <img alt="weather icon" id="icon" />
+      <h1 id="tempNow"></h1>
+      <h6 id="max_min">6° 22°c</h6>
+      <h3 id="description">Scattered Thundershower</h3>
+      <div class="row d-flex" id="forecast">
         <div class="col">
-          <div class="card">
-            <div class="card-body" id="mainReport">
-              <h1
-                class="card-title location pt-2 text-center"
-                id="location"
-              ></h1>
-
-              <div class="row m-4">
-                <div class="col pt-2">
-                  <h1 id="tempNow"></h1>
-                </div>
-
-                <div class="col-6">
-                  <h5 class="float-left">
-                    <div
-                      class="btn-group"
-                      role="group"
-                      aria-label="Basic radio toggle button group"
-                    >
-                      <input
-                        type="radio"
-                        class="btn-check"
-                        name="btnradio"
-                        id="btn-celsius"
-                        autocomplete="off"
-                        checked
-                      />
-                      <label class="btn btn-outline-primary" for="btn-celsius">
-                        °C
-                      </label>
-                      <input
-                        type="radio"
-                        class="btn-check"
-                        name="btnradio"
-                        id="btn-fahrenheit"
-                        autocomplete="off"
-                      />
-                      <label
-                        class="btn btn-outline-primary"
-                        for="btn-fahrenheit"
-                      >
-                        °F
-                      </label>
-                    </div>
-                  </h5>
-                </div>
-                <div class="col-sm-3">
-                  <img id="icon" />
-                  <div class="wtdetail" id="description"></div>
-                  <div class="wtdetail">
-                    Max / Min :
-                    <span class="wtmeasure" id="max_min"></span>
-                  </div>
-                </div>
-              </div>
-              <div class="row m-4">
-                <div class="card-body overflow-auto" id="more-details">
-                  <div class="row">
-                    <div class="col-sm-2">
-                      <h6 class="wtdetail">Humidity</h6>
-                      <p class="wtmeasure" id="humidity"></p>
-                    </div>
-                    <div class="col-sm-3">
-                      <h6 class="wtdetail">wind</h6>
-                      <p class="wtmeasure" id="windSpeed"></p>
-                    </div>
-                    <div class="col-sm-2">
-                      <h6 class="wtdetail">Air Pressure</h6>
-                      <p class="wtmeasure" id="air_pressure"></p>
-                    </div>
-                    <div class="col-sm-3">
-                      <h6 class="wtdetail">Sunrise</h6>
-                      <p class="wtmeasure" id="sunrise"></p>
-                    </div>
-                    <div class="col-sm-2">
-                      <h6 class="wtdetail">Sunset</h6>
-                      <p class="wtmeasure" id="sunset"></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row pt-2" id="updation">
-                <small>Last updated</small>
-                <p class="day" id="current-date"></p>
-              </div>
-            </div>
+          <div class="row">
+            <h6>Mon</h6>
+          </div>
+          <div class="row">
+            <img />
+          </div>
+          <div class="row">
+            <p><span>22</span>/<span>16</span></p>
           </div>
         </div>
-      </div>
-      <div class="row" id="forecast">
-        <div class="col-sm-6 mt-2">
-          <div class="card pt-2">
-            <h6><strong>24-hour weather forecast</strong></h6>
+        <div class="col">
+          <div class="row">
+            <h6>Mon</h6>
           </div>
-          <div class="card" id="hourlyforecast">
-            <div class="card-body overflow-auto">
-              <ul id="hourly-forecast"></ul>
-            </div>
+          <div class="row">
+            <img />
           </div>
-        </div>
-        <div class="col-sm-6 mt-2">
-          <div class="card pt-2">
-            <h6><strong>One-week weather forecast</strong></h6>
-          </div>
-          <div class="card">
-            <div class="card-body overflow-auto" id="weeklyforecast">
-              <ul id="oneWeekForecast"></ul>
-            </div>
+          <div class="row">
+            <p><span>22</span>/<span>16</span></p>
           </div>
         </div>
-      </div>
-      <div class="row mt-4">
-        <!-- <p>
-          <i>Created by Fenila Sosa Philip</i>
-          <a href="https://github.com/fenilaphilip/Weather-Forecast">
-            See source in GitHub..
-          </a>
-        </p> -->
+        <div class="col">
+          <div class="row">
+            <h6>Mon</h6>
+          </div>
+          <div class="row">
+            <img />
+          </div>
+          <div class="row">
+            <p><span>22</span>/<span>16</span></p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row">
+            <h6>Mon</h6>
+          </div>
+          <div class="row">
+            <img />
+          </div>
+          <div class="row">
+            <p><span>22</span>/<span>16</span></p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row">
+            <h6>Mon</h6>
+          </div>
+          <div class="row">
+            <img />
+          </div>
+          <div class="row">
+            <p><span>22</span>/<span>16</span></p>
+          </div>
+        </div>
+
       </div>
     </div>
-  </body>
-  <script src="src/config.js"></script>
-  <script src="src/view.js"></script>
-  <script src="src/index.js"></script>
+  </div>
+  </div>
+</body>
+<script src="src/config.js"></script>
+<script src="src/view.js"></script>
+<script src="src/index.js"></script>
+
 </html>
