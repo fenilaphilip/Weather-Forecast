@@ -1,11 +1,11 @@
 var days = [
-  "Sun",
   "Mon",
   "Tue",
   "Wed",
   "Thu",
   "Fri",
   "Sat",
+  "Sun",
 ];
 
 function display_current_readings(details) {
