@@ -1,12 +1,12 @@
 body {
   font-family: Cerebri Sans, Helvetica, Arial, sans-serif;
-  background-color: rgba(132, 148, 237, 0.356);
+  background-color: rgba(115, 76, 255, 0.201);
 }
 #report {
   margin-top: 50px;
   height: auto;
   padding: 30px;
-  background-color: rgba(108, 137, 215, 0.229);
+  background-color: rgba(113, 76, 246, 0.145);
   border-radius: 10px;
   border: 2px solid black;
 }
@@ -28,6 +28,8 @@ h1 {
 }
 h6,
 p {
+  font-size: 22px;
+  font-weight: lighter;
   text-align: center;
 }
 #tempNow {
@@ -51,9 +53,17 @@ p {
 }
 
 @media only screen and (max-width: 420px) {
-  .seperationLine {
-    margin: auto;
+  h1 {
+    font-size: 30px;
   }
+  #forecast {
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 990px) {
   #forecast {
     text-align: center;
     margin: auto;

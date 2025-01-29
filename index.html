@@ -15,85 +15,29 @@
   <div class="container">
     <div class="text-center pt-2" id="report">
       <div>
-        <form class="d-flex" role="search" id="search">
+        <form class="d-flex" role="search" id="search-button">
           <button class="btn btn-outline-success me-2" title="Current location">
             <img src="src/location.png" id="location-img-btn" />
           </button>
           <input class="form-control me-2" placeholder="Enter city name" aria-label="Search" id="searched-city" />
-          <button class="btn btn-outline-success" type="submit" id="search-button">
+          <button class="btn btn-outline-success" type="submit">
             Search
           </button>
         </form>
       </div>
-      <h1 id="location">Berlin</h1>
+      <h1 id="location"></h1>
       <img alt="weather icon" id="icon" />
       <h1 id="tempNow"></h1>
-      <h6 id="max_min">6° 22°c</h6>
-      <h3 id="description">Scattered Thundershower</h3>
+      <h6 id="max_min"></h6>
+      <h3 id="description"></h3>
       <div class="row d-flex" id="forecast">
-        <div class="col">
-          <div class="row">
-            <h6>Mon</h6>
-          </div>
-          <div class="row">
-            <img />
-          </div>
-          <div class="row">
-            <p><span>22</span>/<span>16</span></p>
-          </div>
-        </div>
-        <div class="col">
-          <div class="row">
-            <h6>Mon</h6>
-          </div>
-          <div class="row">
-            <img />
-          </div>
-          <div class="row">
-            <p><span>22</span>/<span>16</span></p>
-          </div>
-        </div>
-        <div class="col">
-          <div class="row">
-            <h6>Mon</h6>
-          </div>
-          <div class="row">
-            <img />
-          </div>
-          <div class="row">
-            <p><span>22</span>/<span>16</span></p>
-          </div>
-        </div>
-        <div class="col">
-          <div class="row">
-            <h6>Mon</h6>
-          </div>
-          <div class="row">
-            <img />
-          </div>
-          <div class="row">
-            <p><span>22</span>/<span>16</span></p>
-          </div>
-        </div>
-        <div class="col">
-          <div class="row">
-            <h6>Mon</h6>
-          </div>
-          <div class="row">
-            <img />
-          </div>
-          <div class="row">
-            <p><span>22</span>/<span>16</span></p>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
   </div>
+  <script src="src/config.js"></script>
+  <script src="src/view.js"></script>
+  <script src="src/index.js"></script>
 </body>
-<script src="src/config.js"></script>
-<script src="src/view.js"></script>
-<script src="src/index.js"></script>
 
 </html>
