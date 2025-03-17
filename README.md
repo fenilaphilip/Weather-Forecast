@@ -25,7 +25,7 @@ Follow these steps to open this project on your computer.
 **Cloning the Repository**
 
 ```bash
-git clone https://github.com/fenilaphilip/Weather-Forecast
+git clone https://github.com/fenilaphilip/Weather-Forecast.git
 cd Weather-Forecast
 ```
 
