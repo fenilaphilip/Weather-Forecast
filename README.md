@@ -2,7 +2,7 @@
 
 Displaying the temperature using `Javascript DOM manipulation` method. This website utilizes the free subscription of `OpenWeather API`.
 
-[![Live](https://img.shields.io/badge/-LIVE-blue?&style=flat)](https://github.com/fenilaphilip/Weather-Forecast)
+[![Live](https://img.shields.io/badge/-LIVE-blue?&style=flat)](https://tangerine-tanuki-6fca77.netlify.app/)
 
 ## Features
 
